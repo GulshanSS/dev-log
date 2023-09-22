@@ -1,13 +1,12 @@
-import { Button } from "./components/ui/button";
+import PostForm from "./features/posts/components/PostForm";
+import PostsList from "./features/posts/components/PostsList";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="text-3xl">Dev-Log</h1>
-      <Button variant="default" size="lg">
-        Click Me!!
-      </Button>
-    </div>
+    <main className="max-w-screen flex flex-col justify-center items-center py-6 m-auto">
+      <PostForm />
+      <PostsList />
+    </main>
   );
 };
 
