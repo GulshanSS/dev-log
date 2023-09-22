@@ -1,24 +1,42 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { addPost } from "../postsSlice";
+import { selectAllUsers } from "@/features/users/usersSlice";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const PostForm = () => {
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [userId, setUserId] = useState<string>("");
 
   const handleSubmit = () => {
-    if (title && description) {
-      dispatch(addPost(title, description));
+    if (title && description && userId) {
+      dispatch(addPost(title, description, userId));
       setTitle("");
       setDescription("");
+      setUserId("");
     }
   };
+
+  const users = useSelector(selectAllUsers);
+
+  const userOptions = users.map((user) => (
+    <SelectItem key={user.id} value={user.id}>
+      {user.name}
+    </SelectItem>
+  ));
 
   return (
     <div className="w-96">
@@ -34,6 +52,15 @@ const PostForm = () => {
             name="title"
             placeholder={`e.g. "Title 1"`}
           />
+        </div>
+        <div>
+          <Label>User</Label>
+          <Select onValueChange={(userId) => setUserId(userId)}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select User" />
+            </SelectTrigger>
+            <SelectContent>{userOptions}</SelectContent>
+          </Select>
         </div>
         <div className="space-y-2">
           <Label htmlFor="description">Description</Label>
