@@ -1,5 +1,5 @@
 export type TPost = {
-  id: number;
+  id: string;
   title: string;
   description: string;
 };
