@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -15,13 +14,7 @@ const PostForm = () => {
 
   const handleSubmit = () => {
     if (title && description) {
-      dispatch(
-        addPost({
-          id: nanoid(),
-          title,
-          description,
-        })
-      );
+      dispatch(addPost(title, description));
       setTitle("");
       setDescription("");
     }
