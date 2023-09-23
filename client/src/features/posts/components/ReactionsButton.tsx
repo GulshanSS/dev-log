@@ -13,7 +13,7 @@ type Props = {
   post: TPost;
 };
 
-const IconReactions = ({ post }: Props) => {
+const ReactionsButton = ({ post }: Props) => {
   const dispatch = useDispatch();
 
   return (
@@ -38,4 +38,4 @@ const IconReactions = ({ post }: Props) => {
   );
 };
 
-export default IconReactions;
+export default ReactionsButton;
