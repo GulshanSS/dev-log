@@ -10,9 +10,9 @@ const PostsList = () => {
     .sort((a, b) => b.date.localeCompare(a.date));
 
   return (
-    <section className="my-10">
+    <section>
       <h1 className="text-3xl font-bold text-center">Posts</h1>
-      <div className="space-y-8 mt-8">
+      <div className="mt-8 flex flex-wrap justify-center gap-4">
         {orderedPosts &&
           orderedPosts.map((post) => <Post key={post.id} post={post} />)}
       </div>

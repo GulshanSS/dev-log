@@ -40,10 +40,10 @@ const PostForm = () => {
 
   return (
     <div className="w-96">
-      <h1 className="text-3xl font-bold text-center">Create Post</h1>
+      <h1 className="text-3xl font-bold text-center text-white">Create Post</h1>
       <form className="space-y-6">
         <div className="space-y-2">
-          <Label htmlFor="title">Title</Label>
+          <Label htmlFor="title" className="text-white">Title</Label>
           <Input
             id="title"
             value={title}
@@ -54,7 +54,7 @@ const PostForm = () => {
           />
         </div>
         <div>
-          <Label>User</Label>
+          <Label className="text-white">User</Label>
           <Select onValueChange={(userId) => setUserId(userId)}>
             <SelectTrigger>
               <SelectValue placeholder="Select User" />
@@ -63,7 +63,7 @@ const PostForm = () => {
           </Select>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor="description" className="text-white">Description</Label>
           <Input
             id="description"
             value={description}
@@ -73,7 +73,7 @@ const PostForm = () => {
             placeholder={`e.g. "This is long desctiption"`}
           />
         </div>
-        <Button type="button" onClick={handleSubmit} variant="default">
+        <Button className="bg-slate-900 text-white hover:bg-slate-700 uppercase font-extrabold border border-slate-600" type="button" onClick={handleSubmit} variant="default">
           Add
         </Button>
       </form>
